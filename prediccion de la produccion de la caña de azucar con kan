@@ -1,0 +1,55 @@
+import tkinter as tk
+
+# Implementación de la red neuronal de Kolmogorov-Arnold para predecir producción de caña de azúcar
+class KolmogorovArnoldNN:
+    def init(self):
+        self.weights = [0.5, 0.3, 0.2]  # Pesos de la red neuronal
+    
+    def predict(self, datos):
+        produccion_estimada = sum(dato * peso for dato, peso in zip(datos.values(), self.weights))
+        return produccion_estimada
+
+# Crear instancia de la red neuronal de Kolmogorov-Arnold
+kolmogorov_arnold_nn = KolmogorovArnoldNN()
+
+def predecir_produccion():
+    try:
+        lluvia = float(entry_lluvia.get())
+        temperatura = float(entry_temperatura.get())
+        humedad = float(entry_humedad.get())
+        
+        datos = {"lluvia": lluvia, "temperatura": temperatura, "humedad": humedad}
+        
+        produccion_predicha = kolmogorov_arnold_nn.predict(datos)
+        label_resultado.config(text=f"Producción Predicha: {produccion_predicha} toneladas")
+    except ValueError:
+        label_resultado.config(text="¡Por favor, ingresa números válidos para lluvia, temperatura y humedad!")
+
+# Crear ventana
+root = tk.Tk()
+root.title("Predicción de Producción de Caña de Azúcar")
+
+# Crear etiquetas y campos de entrada
+label_lluvia = tk.Label(root, text="Lluvia:")
+label_lluvia.pack()
+entry_lluvia = tk.Entry(root)
+entry_lluvia.pack()
+
+label_temperatura = tk.Label(root, text="Temperatura:")
+label_temperatura.pack()
+entry_temperatura = tk.Entry(root)
+entry_temperatura.pack()
+
+label_humedad = tk.Label(root, text="Humedad:")
+label_humedad.pack()
+entry_humedad = tk.Entry(root)
+entry_humedad.pack()
+
+button_predecir = tk.Button(root, text="Predecir Producción", command=predecir_produccion)
+button_predecir.pack()
+
+label_resultado = tk.Label(root, text="")
+label_resultado.pack()
+
+# Ejecutar la interfaz gráfica
+root.mainloop()
