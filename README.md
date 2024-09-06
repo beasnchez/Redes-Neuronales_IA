@@ -5,3 +5,4 @@ funciones univariadas, siguiendo el teorema de representación de Kolmogorov-Arn
 al usuario ingresar los datos y obtener la predicción, mostrando un mensaje de error si se ingresan valores no válidos o negativos. Esta
 implementación demuestra cómo una red KAN puede ser utilizada para realizar predicciones basadas en datos de entrada de manera eficiente y
 amigable para el usuario.
+https://drive.google.com/file/d/1ciJVKymX8VgaURUpsGerHlbuKpPtKCO9/view?usp=drivesdk
